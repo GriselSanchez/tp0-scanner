@@ -7,7 +7,7 @@ int main(void) {
 	typedef enum TOKENS Result;
 	Result result;
 
-	char *names[sizeof(Result)] = { "Separador", "Cadena", "Fin De Texto" };
+	char *names[sizeof(Result)] = { "Fin De Texto", "Separador", "Cadena" };
 	char buffer[BUFSIZ];
 
 	do {

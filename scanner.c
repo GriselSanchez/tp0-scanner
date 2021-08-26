@@ -10,7 +10,7 @@ int get_token(char buffer[]) {
 
 	if (is_separator(currentChar)) {
 		buffer[i++] = currentChar;
-		end_string(buffer, &i);
+		end_string(buffer, i);
 		return tokenSEP;
 	}
 
@@ -21,18 +21,18 @@ int get_token(char buffer[]) {
 	while (1) {
 		if (is_separator(currentChar) || isspace(currentChar)) {
 			ungetc(currentChar, stdin);
+			end_string(buffer, i);
 			return tokenCAD;
 		}
 
 		if (currentChar == EOF) {
+			end_string(buffer, 0);
 			return tokenFDT;
 		}
 
 		buffer[i++] = currentChar;
 		currentChar = getchar();
 	}
-
-	end_string(buffer, &i);
 }
 
 int is_separator(int c) {
@@ -47,7 +47,7 @@ int is_separator(int c) {
 	return 0;
 }
 
-void end_string(char buffer[], int *i) {
-	buffer[(*i)++] = '\0';
+void end_string(char buffer[], int pos) {
+	buffer[pos] = '\0';
 }
 
