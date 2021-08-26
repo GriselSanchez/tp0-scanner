@@ -13,7 +13,7 @@ int main(void) {
 	do {
 		result = get_token(buffer);
 
-		if (result != -1) {
+		if ((int) result >= 0) {
 			printf("%s: %s \n", names[result], buffer);
 		}
 
